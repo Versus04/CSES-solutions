@@ -5,7 +5,7 @@ int main()
 {
     long long n ,target;
     cin>>n>>target;
-    unordered_map<long long,long long>mpp;
+    map<long long,long long>mpp;
     long long cnt=0;
     mpp[0]=1;
     long long sum=0;
@@ -14,8 +14,9 @@ int main()
         long long x;
         cin>>x;
         sum+=x;
-        mpp[sum]++;
+       
         if(mpp.find(sum-target)!=mpp.end())cnt+=mpp[sum-target];
-    }
+         mpp[sum]++;
+        }
     cout<<cnt;
 }

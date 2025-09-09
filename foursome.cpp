@@ -19,19 +19,20 @@ int main()
             bool flag=false;
 
     sort(nums.begin(),nums.end(),cmp);
-    for(int i=0;i<n;i++)
-    {
-        int j=i+1;
+    for(int i=0;i<n-3;i++)
+    { if (i > 0 && nums[i] == nums[i-1]) continue;
+        for(int j=i+1;j<n-2;j++){if (j != i + 1 && nums[j] == nums[j-1]) continue;
+        int l=j+1;
         int k=n-1;
         while(j<k){
-        long long sum = nums[i].first+nums[j].first+nums[k].first;
+        long long sum = nums[i].first+nums[j].first+nums[k].first+nums[l].first;
                 if(sum>t)
                 {
                     k--;
                 }
                 else if(sum<t)  
                 {
-                    j++;
+                    l++;
                 }
                 else
                 {   
@@ -40,6 +41,7 @@ int main()
                     ans.push_back(nums[j].second);
                     
                     ans.push_back(nums[k].second);
+                    ans.push_back(nums[l].second);
                     flag=true;
                     break;
 
@@ -47,6 +49,8 @@ int main()
                 
             }
         if(flag)break;
+    }
+    if(flag)break;
     }
     if(flag)for(auto it: ans)
     {
